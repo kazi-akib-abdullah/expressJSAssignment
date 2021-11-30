@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+    integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+  <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+  <!-- <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB09-p_fRNW9KiZ5gp-ay7Mh2PapVAdQyc&callback=initMap&v=weekly"
+      async
+    ></script> -->
+  <script
+    src="https://cdn.rawgit.com/googlemaps/v3-utility-library/master/markerwithlabel/src/markerwithlabel.js"></script>
+
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/ui-lightness/jquery-ui.css">
+
+
+
+</head>
+
+
+<script>
+
+  function myFunction() {
+    var searchInput = 'search_input';
+    $(document).ready(function () {
+      var autocomplete;
+      // console.log(searchInput.length)
+      if (searchInput.length > 3) {
+        autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
+          types: ['geocode'],
+          /*componentRestrictions: {
+           country: "USA"
+          }*/
+        });
+
+        google.maps.event.addListener(autocomplete, 'place_changed', function () {
+          var near_place = autocomplete.getPlace();
+        });
+      }
+
+    });
+
+  }
+</script>
+
+
+<body>
+  <div id="Div1">
+    <header class="header">
+      <nav
+        class="navbar nav-sm navbar-expand-lg navbar-light bg-light navbar-toggleable-md navbar-fixed-top topnav col-12"
+        role="navigation">
+        <div class="navbar-header col-6 nav-item navbar-left">
+          <ul class="nav-item dropdown click-mobile-hamburg">
+            <li class="nav-item ">
+              <a class="navbar-brand dropdown" href="#"><i class="fa fa-bars"></i></a>
+              <div class="dropdown-content">
+                <a href="">Home</a>
+                <a href="">Bookmarked</a>
+                <a href="">List of Property</a>
+                <a href="">About</a>
+                <a href="">FAQ</a>
+                <a href="">Blog</a>
+              </div>
+            </li>
+
+            <li class="nav-item">
+              <div class="float-left">
+                <img class="p-0 m-0" src="../image/bedroomvillas-logo.png" alt="">
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-6 nav-item float-right">
+          <ul class="nav navbar-nav ml-auto mb-2 mb-lg-0  navbar-right">
+            <li class="nav-item">
+              <form class="d-flex float-right">
+                <input class=" me-2 btn-outline" onkeypress="myFunction()" type="text" id="search_input"
+                  placeholder="Arizona, USA">
+                <input class="form-control me-2 btn-outline" type="text" id="dt1" placeholder="Check In">
+                <input class="form-control me-2 btn-outline" type="text" id="dt2" placeholder="Check Out">
+                <input type="text" class="form-control me-2 button btn-outline" name="" id="guest" placeholder="Guest"
+                  data-bs-toggle="modal" data-bs-target="#exampleModal1" data-toggle="myModal">
+                <input type="text" class="form-control me-2 button btn-outline" name="" id="price"
+                  placeholder="Price Range" data-bs-toggle="modal" data-bs-target="#exampleModal2"
+                  data-toggle="myModal">
+                <input type="text" class="btn btn-warning form-control me-2 button btn-outline" onclick="showDiv()"
+                  style="text-align: center; cursor: pointer;" name="" id="" placeholder="Search" data-bs-toggle="modal"
+                  data-bs-target="#exampleModal3" data-toggle="myModal">
+
+              </form>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <section style="background-color:white;" class="float-left p-2">
+        <span>Vacation Rentals in Arizona <span class="text-warning">| USA > Arizona</span></span>
+      </section>
+
+
+
+    </header>
+
+    <div class="card-group py-2">
+      <div class="row row-cols-1 row-cols-md-3 g-4 p-2">
+        <div class="col">
+          <div class="card h-100">
+            <img src="../image/bluegreen-vacations-cibola-vista-resort-and-spa-an-ascend-re-0.jpg"
+              class="card-img-top parent-image" alt="...">
+            <a href="#" class="btn image-bottom"><b>From <span>&#2547;</span> 9,185</b></a>
+            <a href="" class="btn image-top">More Photos <i class="fas fa-share-square"></i></a>
+            <a href="" class="btn image-bottom-right"><i class="far fa-heart"></i></a>
+            <div class="card-body">
+              <h5 class="card-title">The Westin Kierland Resort & Spa</h5>
+              <div class="row">
+                <div class="col">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <span class="p-3">683 Reviews</span>
+                  <p>Sleeps 85</p>
+                  <p class="text-primary">Arizona>Lake Havasu City</p>
+                </div>
+                <div class="col-3">
+                  <div class="float-right">
+                    <a href="#" class="btn btn-warning">View Details</a>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+            <div class="card-footer">
+              <i class="far fa-check-circle"></i>
+              <span>View</span>
+              <i class="far fa-check-circle"></i>
+              <span>Child Friendly</span>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img src="../image/luxury-suites-international-at-the-signature-0.jpg" class="card-img-top" alt="...">
+            <a href="#" class="btn image-bottom"><b>From <span>&#2547;</span> 9,185</b></a>
+            <a href="" class="btn image-top">More Photos <i class="fas fa-share-square"></i></a>
+            <a href="" class="btn image-bottom-right"><i class="far fa-heart"></i></a>
+            <div class="card-body">
+              <h5 class="card-title">Holiday Inn Express & Suites Rancho Mirage, an IHG Hotel </h5>
+              <div class="row">
+                <div class="col">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <span class="p-3">683 Reviews</span>
+                  <p>Sleeps 85</p>
+                  <p class="text-primary">Arizona>Lake Havasu City</p>
+                </div>
+                <div class="col-3">
+                  <div class="float-right">
+                    <a href="#" class="btn btn-warning">View Details</a>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+            <div class="card-footer">
+              <i class="far fa-check-circle"></i>
+              <span>View</span>
+              <i class="far fa-check-circle"></i>
+              <span>Child Friendly</span>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img src="../image/the-lodge-at-ventana-canyon-0.jpg" class="card-img-top" alt="...">
+            <a href="#" class="btn image-bottom"><b>From <span>&#2547;</span> 9,185</b></a>
+            <a href="" class="btn image-top">More Photos <i class="fas fa-share-square"></i></a>
+            <a href="" class="btn image-bottom-right"><i class="far fa-heart"></i></a>
+            <div class="card-body">
+              <h5 class="card-title">The Westin Mission Hills Golf Resort & Spa</h5>
+              <div class="row">
+                <div class="col">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <span class="p-3">683 Reviews</span>
+                  <p>Sleeps 85</p>
+                  <p class="text-primary">Arizona>Lake Havasu City</p>
+                </div>
+                <div class="col-3">
+                  <div class="float-right">
+                    <a href="#" class="btn btn-warning">View Details</a>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+            <div class="card-footer">
+              <i class="far fa-check-circle"></i>
+              <span>View</span>
+              <i class="far fa-check-circle"></i>
+              <span>Child Friendly</span>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img src="../image/the-nautical-beachfront-resort-0.jpg" class="card-img-top" alt="...">
+            <a href="#" class="btn image-bottom"><b>From <span>&#2547;</span> 9,185</b></a>
+            <a href="" class="btn image-top">More Photos <i class="fas fa-share-square"></i></a>
+            <a href="" class="btn image-bottom-right"><i class="far fa-heart"></i></a>
+            <div class="card-body">
+              <h5 class="card-title">Holiday Inn Express Hotel & Suites Cathedral City - Palm Springs, an IHG Hotel
+              </h5>
+              <div class="row">
+                <div class="col">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <span class="p-3">683 Reviews</span>
+                  <p>Sleeps 85</p>
+                  <p class="text-primary">Arizona>Lake Havasu City</p>
+                </div>
+                <div class="col-3">
+                  <div class="float-right">
+                    <a href="#" class="btn btn-warning">View Details</a>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+            <div class="card-footer">
+              <i class="far fa-check-circle"></i>
+              <span>View</span>
+              <i class="far fa-check-circle"></i>
+              <span>Child Friendly</span>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img src="../image/wekopa-casino-resort-0.jpg" class="card-img-top" alt="...">
+            <a href="#" class="btn image-bottom"><b>From <span>&#2547;</span> 9,185</b></a>
+            <a href="" class="btn image-top">More Photos <i class="fas fa-share-square"></i></a>
+            <a href="" class="btn image-bottom-right"><i class="far fa-heart"></i></a>
+            <div class="card-body">
+              <h5 class="card-title">Holiday Inn Express Palm Desert, an IHG Hotel </h5>
+              <div class="row">
+                <div class="col">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <span class="p-3">683 Reviews</span>
+                  <p>Sleeps 85</p>
+                  <p class="text-primary">Arizona>Lake Havasu City</p>
+                </div>
+                <div class="col-3">
+                  <div class="float-right">
+                    <a href="#" class="btn btn-warning">View Details</a>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+            <div class="card-footer">
+              <i class="far fa-check-circle"></i>
+              <span>View</span>
+              <i class="far fa-check-circle"></i>
+              <span>Child Friendly</span>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img src="../image/westward-look-wyndham-grand-resort-spa-0.jpg" class="card-img-top" alt="...">
+            <a href="#" class="btn image-bottom"><b>From <span>&#2547;</span> 9,185</b></a>
+            <a href="" class="btn image-top">More Photos <i class="fas fa-share-square"></i></a>
+            <a href="" class="btn image-bottom-right"><i class="far fa-heart"></i></a>
+            <div class="card-body">
+              <h5 class="card-title">The Lodge at Ventana Canyon</h5>
+              <div class="row">
+                <div class="col">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <span class="p-3">683 Reviews</span>
+                  <p>Sleeps 85</p>
+                  <p class="text-primary">Arizona>Lake Havasu City</p>
+                </div>
+                <div class="col-3">
+                  <div class="float-right">
+                    <a href="#" class="btn btn-warning">View Details</a>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+            <div class="card-footer">
+              <i class="far fa-check-circle"></i>
+              <span>View</span>
+              <i class="far fa-check-circle"></i>
+              <span>Child Friendly</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- three Modal -->
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content text-center">
+          <div class="modal-header text-center">
+            <h5 class="modal-title justify-content-center" id="exampleModalLabel">Guests</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="value-button btn-outline-primary text-center dot" style="cursor: pointer;float: left;"
+              id="decrease" onclick="decreaseValue()" value="Decrease Value">-</div>
+            <input class=" btn-outline-primary text-center" type="number" id="number" value="0" />
+            <div class="value-button btn-outline-primary text-center dot" style="cursor: pointer; float: right;"
+              id="increase" onclick="increaseValue()" value="Increase Value">+</div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Apply</button>
+            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-body">
+            <p>
+              <label for="amount">Price range:</label>
+              <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+            </p>
+            <div id="slider-range"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p id="search"></p>
+            <p id="search1"></p>
+            <p id="search2"></p>
+            <p id="search3"></p>
+            <p id="search4"></p>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--The div element for the map -->
+  <div id="map"></div>
+  <div class="text-center">
+    <button id="Button1" class="btn-warning" onclick="showMap()">Show Map/Back Website</button>
+  </div>
+
+
+
+  <!-- The div element for the weather -->
+  <div>
+        <button id="Button2" class="btn-warning" onclick="exchangeTemp()">Change Temperature</button>
+
+    <div id="weather_c">
+      <h3 style="color: rgb(39, 39, 233);" class="m-2 p-2 ">Weather in {{place}}, {{country}}</h3>
+      <p class="m-2 p-2" style="color: rgb(75, 68, 68); background-color: rgb(255, 215, 215)">View the weather forecast
+        for {{place}} before booking your {{place}} vacation rental to confirm your best time to go.</p>
+      <div class="card-group p-1">
+        <div class="card p-1 m-1  border-secondary d-flex align-items-center">
+          <div class="card-img-middle " alt="...">
+            <i class="fas fa-smog fa-7x"></i>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">December - February</h5>
+            <p class="col card-text"><span class="col-6" style="float: left;">High {{high_c}} </span> <span
+                class="col-6" style="float: left;">Low {{low_c}}</span></p>
+          </div>
+        </div>
+        <div class="card p-1 m-1 border-secondary d-flex align-items-center">
+          <div class="card-img-middle" alt="...">
+            <i class="fas fa-snowflake fa-7x"></i>
+          </div>
+
+          <div class="card-body">
+            <h5 class="card-title">March - May</h5>
+            <p class="col card-text"><span class="col-6" style="float: left;">High {{high_c}} </span> <span
+                class="col-6" style="float: right;">Low {{low_c}}</span></p>
+          </div>
+        </div>
+        <div class="card p-1 m-1 border-secondary d-flex align-items-center">
+          <div class="card-img-middle" alt="...">
+            <i class="fas fa-sun fa-7x"></i>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">June - August</h5>
+            <p class="col card-text"><span class="col-lg-6" style="float: left;">High {{high_c}} </span> <span
+                class="col-lg-6" style="float: right;">Low {{low_c}}</span></p>
+          </div>
+        </div>
+        <div class="card p-1 m-1 border-secondary d-flex align-items-center">
+          <div class="card-img-middle" alt="...">
+            <i class="fas fa-cloud-showers-heavy fa-7x"></i>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">September - November</h5>
+            <p class="col card-text"><span class="col-6" style="float: left;">High {{high_c}} </span> <span
+                class="col-6" style="float: left;">Low {{low_c}}</span></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div id="weather_f" style="display: none;">
+      <h3 style="color: rgb(39, 39, 233);" class="m-2 p-2 ">Weather in {{place}}, {{country}}</h3>
+      <p class="m-2 p-2" style="color: rgb(75, 68, 68); background-color: rgb(255, 215, 215)">View the weather forecast
+        for {{place}} before booking your {{place}} vacation rental to confirm your best time to go.</p>
+      <div class="card-group p-1">
+        <div class="card p-1 m-1  border-secondary d-flex align-items-center">
+          <div class="card-img-middle " alt="...">
+            <i class="fas fa-smog fa-7x"></i>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">December - February</h5>
+            <p class="col card-text"><span class="col-6" style="float: left;">High {{high_f}} </span> <span
+                class="col-6" style="float: left;">Low {{low_f}}</span></p>
+          </div>
+        </div>
+        <div class="card p-1 m-1 border-secondary d-flex align-items-center">
+          <div class="card-img-middle" alt="...">
+            <i class="fas fa-snowflake fa-7x"></i>
+          </div>
+
+          <div class="card-body">
+            <h5 class="card-title">March - May</h5>
+            <p class="col card-text"><span class="col-6" style="float: left;">High {{high_f}} </span> <span
+                class="col-6" style="float: right;">Low {{low_f}}</span></p>
+          </div>
+        </div>
+        <div class="card p-1 m-1 border-secondary d-flex align-items-center">
+          <div class="card-img-middle" alt="...">
+            <i class="fas fa-sun fa-7x"></i>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">June - August</h5>
+            <p class="col card-text"><span class="col-lg-6" style="float: left;">High {{high_f}} </span> <span
+                class="col-lg-6" style="float: right;">Low {{low_f}}</span></p>
+          </div>
+        </div>
+        <div class="card p-1 m-1 border-secondary d-flex align-items-center">
+          <div class="card-img-middle" alt="...">
+            <i class="fas fa-cloud-showers-heavy fa-7x"></i>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">September - November</h5>
+            <p class="col card-text"><span class="col-6" style="float: left;">High {{high_f}} </span> <span
+                class="col-6" style="float: left;">Low {{low_f}}</span></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+  <script type="text/javascript"
+    src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyArTUpPxK58U3xCnOuoFYGMtLfce4S0Ok4&sensor=false&callback=initMap&libraries=places"
+    async defer></script>
+
+
+  <script src="../index.js"></script>
+  <script src="../modal.js"></script>
+  <!-- <script src="index.js"></script> -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
